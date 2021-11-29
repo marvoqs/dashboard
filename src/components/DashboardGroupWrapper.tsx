@@ -1,10 +1,8 @@
-import { FC } from "react";
-
 interface Props {
   items: any[];
 }
 
-const DashboardGroupWrapper: FC<Props> = ({ items }) => {
+const DashboardGroupWrapper = ({ items }: Props) => {
   return <div></div>;
 };
 
