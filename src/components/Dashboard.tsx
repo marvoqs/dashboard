@@ -2,8 +2,10 @@ import { useCallback } from "react";
 import styled from "styled-components";
 import { useDrop } from "react-dnd";
 
+import DraggableGroup from "./DraggableGroup";
 import DraggableItem from "./DraggableItem";
 
+import { GroupType } from "../hooks/useGroups";
 import { ItemType, PositionType } from "../hooks/useItems";
 
 const Wrapper = styled.main`
@@ -15,11 +17,13 @@ const Wrapper = styled.main`
 
 interface Props {
   deleteItem: (itemId: string) => void;
+  getGroups: () => GroupType[];
   getItems: () => ItemType[];
   setItems: (value: ItemType[] | ((val: ItemType[]) => ItemType[])) => void;
 }
 
-const Dashboard = ({ deleteItem, getItems, setItems }: Props) => {
+const Dashboard = ({ deleteItem, getGroups, getItems, setItems }: Props) => {
+  const groups = getGroups();
   const items = getItems();
 
   const moveItem = useCallback(
@@ -56,6 +60,9 @@ const Dashboard = ({ deleteItem, getItems, setItems }: Props) => {
     <Wrapper ref={drop}>
       {items.map((item) => (
         <DraggableItem key={item.id} {...item} onDeleteItem={deleteItem} />
+      ))}
+      {groups.map((group) => (
+        <DraggableGroup key={group.id} {...group} />
       ))}
     </Wrapper>
   );
