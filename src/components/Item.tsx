@@ -19,12 +19,7 @@ interface Props {
   title: string;
 }
 
-const DashboardItemBox = ({
-  id,
-  isPreview = false,
-  onDeleteItem,
-  title,
-}: Props) => {
+const Item = ({ id, isPreview = false, onDeleteItem, title }: Props) => {
   const handleDeleteButtonClick = () => {
     if (onDeleteItem) onDeleteItem(id);
   };
@@ -39,4 +34,4 @@ const DashboardItemBox = ({
   );
 };
 
-export default memo(DashboardItemBox);
+export default memo(Item);

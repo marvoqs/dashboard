@@ -3,9 +3,9 @@ import { DragSourceMonitor, useDrag } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import styled from "styled-components";
 
-import DashboardItemBox from "./DashboardItemBox";
+import Item from "./Item";
 
-import { ItemType, PositionType } from "../hooks/useDashboard";
+import { ItemType, PositionType } from "../hooks/useItems";
 
 const Wrapper = styled.div<{ isDragging: boolean; position: PositionType }>`
   cursor: grab;
@@ -23,7 +23,7 @@ interface Props extends ItemType {
   onDeleteItem: (id: string) => void;
 }
 
-const Draggable = ({ id, onDeleteItem, title, position }: Props) => {
+const DraggableItem = ({ id, onDeleteItem, title, position }: Props) => {
   const [{ isDragging }, drag, preview] = useDrag(
     () => ({
       type: "box",
@@ -41,9 +41,9 @@ const Draggable = ({ id, onDeleteItem, title, position }: Props) => {
 
   return (
     <Wrapper isDragging={isDragging} position={position} ref={drag}>
-      <DashboardItemBox id={id} onDeleteItem={onDeleteItem} title={title} />
+      <Item id={id} onDeleteItem={onDeleteItem} title={title} />
     </Wrapper>
   );
 };
 
-export default memo(Draggable);
+export default memo(DraggableItem);

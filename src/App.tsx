@@ -1,14 +1,14 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import AddItemButton from "./components/AddItemButton";
+import AddItemButton from "./components/buttons/AddItemButton";
 import CustomDragLayer from "./components/CustomDragLayer";
 import Dashboard from "./components/Dashboard";
 
-import useDashboard from "./hooks/useDashboard";
+import useItems from "./hooks/useItems";
 
 function App() {
-  const { addItem, deleteItem, getItems, setItems } = useDashboard();
+  const { addItem, deleteItem, getItems, setItems } = useItems();
 
   return (
     <>

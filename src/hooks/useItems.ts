@@ -14,7 +14,7 @@ export interface ItemType {
   title: string;
 }
 
-const useDashboard = () => {
+const useItems = () => {
   const [items, setItems] = useLocalStorage<ItemType[]>("items", []);
 
   const addItem = (title: string, position = { left: 0, top: 0 }) => {
@@ -37,4 +37,4 @@ const useDashboard = () => {
   return { addItem, deleteItem, getItems, items, setItems };
 };
 
-export default useDashboard;
+export default useItems;

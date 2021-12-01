@@ -2,9 +2,9 @@ import { useCallback } from "react";
 import styled from "styled-components";
 import { useDrop } from "react-dnd";
 
-import Draggable from "./Draggable";
+import DraggableItem from "./DraggableItem";
 
-import { ItemType, PositionType } from "../hooks/useDashboard";
+import { ItemType, PositionType } from "../hooks/useItems";
 
 const Wrapper = styled.main`
   background-color: gray;
@@ -55,7 +55,7 @@ const Dashboard = ({ deleteItem, getItems, setItems }: Props) => {
   return (
     <Wrapper ref={drop}>
       {items.map((item) => (
-        <Draggable key={item.id} {...item} onDeleteItem={deleteItem} />
+        <DraggableItem key={item.id} {...item} onDeleteItem={deleteItem} />
       ))}
     </Wrapper>
   );

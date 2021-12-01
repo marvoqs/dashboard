@@ -1,6 +1,6 @@
 import { XYCoord, useDragLayer } from "react-dnd";
 import styled from "styled-components";
-import DraggablePreview from "./DraggablePreview";
+import DraggableItemPreview from "./DraggableItemPreview";
 
 const LayerWrapper = styled.div`
   position: fixed;
@@ -37,7 +37,7 @@ const CustomDragLayer = () => {
   function renderItem() {
     switch (itemType) {
       case "box":
-        return <DraggablePreview id={item.id} title={item.title} />;
+        return <DraggableItemPreview id={item.id} title={item.title} />;
       default:
         return null;
     }

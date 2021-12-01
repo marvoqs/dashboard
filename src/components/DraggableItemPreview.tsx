@@ -1,7 +1,7 @@
 import { memo } from "react";
 import styled from "styled-components";
 
-import DashboardItemBox from "./DashboardItemBox";
+import Item from "./Item";
 
 const Wrapper = styled.div`
   display: inline-block;
@@ -13,16 +13,12 @@ export interface Props {
   title: string;
 }
 
-export interface BoxDragPreviewState {
-  tickTock: any;
-}
-
-const DraggablePreview = ({ id, title }: Props) => {
+const DraggableItemPreview = ({ id, title }: Props) => {
   return (
     <Wrapper>
-      <DashboardItemBox id={id} title={title} isPreview />
+      <Item id={id} title={title} isPreview />
     </Wrapper>
   );
 };
 
-export default memo(DraggablePreview);
+export default memo(DraggableItemPreview);
